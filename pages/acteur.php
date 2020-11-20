@@ -230,15 +230,14 @@
 					{ // mettre htmlspecialchars
 						$nom = htmlspecialchars($data['nom']);
 						$prenom = htmlspecialchars($data['prenom']);
-						$date = preg_replace("#([0-9]{4})-([0-9]{2})-([0-9]{2})#","Le $3/$2/$1",$data['date_add']);
+						$date = preg_replace("#([0-9]{4})-([0-9]{2})-([0-9]{2}) ([0-9]{2}:[0-9]{2}:[0-9]{2})#","Le $3/$2/$1",$data['date_add']);
 						$post = htmlspecialchars($data['post']);
 						$photo = htmlspecialchars($data['photo']);
 						?>
 							<div class="post">
-								<div class="post_photo"><img src="uploads/<?php echo $photo ; ?>" alt="photo"/><p> Nom : <?php echo $nom; ?></p></div>
-								<p> Prenom : <?php echo $prenom; ?></p>
-								<p> Date : <?php echo $date; ?></p>
-								<p> Commentaire : <br/><?php echo nl2br($post); ?></p>
+								<div class="post_photo"><img src="uploads/<?php echo $photo ; ?>" alt="photo"/></div>
+								<p><?php echo $date; ?>, <?php echo $prenom; ?> <?php echo $nom; ?> a commenté :</p>
+								<p><?php echo nl2br($post); ?></p>
 							</div>
 						<?php
 					}

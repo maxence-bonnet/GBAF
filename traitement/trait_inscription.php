@@ -1,6 +1,4 @@
 <?php
-
-
 if(isset($_POST['last_name']) AND isset($_POST['first_name']) AND isset($_POST['username']) AND isset($_POST['pass1']) AND isset($_POST['pass2']) AND isset($_POST['question']) AND isset($_POST['answer']))
 {
 	foreach($_POST as $value => $key)
@@ -48,6 +46,9 @@ if(isset($_POST['last_name']) AND isset($_POST['first_name']) AND isset($_POST['
 		$query = $db->prepare('INSERT INTO account(nom, prenom, username, password, question, reponse) VALUES(:nom, :prenom, :username, :pass, :question, :answer)');
 		$query->execute(array('nom' => $_POST['last_name'], 'prenom' => $_POST['first_name'], 'username' => $_POST['username'], 'pass' => $pass, 'question' => $_POST['question'], 'answer' => $_POST['answer']));
 		$query->closeCursor();
+		// envoi d'une notification confirmation de l'inscription
+		session_start();
+		$_SESSION['success'] = true;
 		header('Location: ../pages/accueil.php');
 	}
 }
