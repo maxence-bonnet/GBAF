@@ -46,7 +46,7 @@ if(isset($_GET['act']) AND isset($_SESSION['username'])) // Si il y a bien un pa
 		$result->closeCursor();
 		if(!$data) // Pas de donnée -> il n'y a pas de commentaire de cet utilisateur pour cet acteur
 		{			
-			$new_post = nl2br(htmlspecialchars($_POST['new_post']));			
+			$new_post = htmlspecialchars($_POST['new_post']);			
 			// 3) Écriture dans la table post
 			$query = $db->prepare('INSERT INTO post(id_user, id_actor, post) VALUES(:id_user, :id_actor, :post)');
 			$query->execute(array('id_user' => $id_user, 'id_actor' => $actor, 'post' => $new_post));
