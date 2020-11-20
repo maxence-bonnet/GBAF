@@ -1,0 +1,18 @@
+<?php
+	session_start();
+?>
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" href="style.css" />
+		<title>Contact</title>
+	</head>
+	<body>
+		<?php include("../includes/inc_header.php"); ?>
+		<div class ="content contact_content">
+			<h1>CONTACT</h1>
+		</div>
+		<?php include("../includes/inc_footer.php"); ?>
+	</body>
+</html>
