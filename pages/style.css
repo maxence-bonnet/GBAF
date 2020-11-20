@@ -1,4 +1,8 @@
 /* === GLOBAL === */
+html
+{
+	scroll-behavior: smooth;
+}
 body
 {
 	width:95%;
@@ -416,6 +420,22 @@ body
 {
 	padding:1em;
 	border:1px solid black;
+}
+.actor_like_management .case_commented
+{
+	display:inline-block;
+	border:1px solid black;
+	padding:1em;
+}
+.actor_like_management .case_commented p, .actor_like_management .case_commented a
+{
+	display:inline-block;
+	margin:auto;
+}
+.actor_like_management .case_commented p.splitter
+{
+	margin-right:.5em;
+	margin-left:.5em;
 }
 .actor_like_management a
 {

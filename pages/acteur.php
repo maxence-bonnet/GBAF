@@ -51,7 +51,30 @@
 				    	</div>
 				    </div>
 				    	<div class="actor_like_management">
-				    		<a href="acteur.php?act=<?php echo $actor; ?>&amp;add=1#new_post">Ajouter un commentaire public</a>
+				    		<!-- Affichage conditionnel ("ajouter un commentaire" si l'utilisateur n'en a pas encore mis / "Vous avez commenté cet acteur" + "supprimer mon commentaire" si un commentaire est présent) -->
+				    		<?php // On vérifie si l'utilisateur a déjà posté un commentaire pour cet acteur
+		    					$result = $db->prepare('SELECT account.id_user, username, post.id_user, id_actor
+														FROM account
+														INNER JOIN post
+														ON account.id_user = post.id_user
+														WHERE username = :username
+														AND id_actor = :actor');
+								$result->execute(array('username' => $username, 'actor' => $actor));
+								$data = $result->fetch();
+								if(!$data)// pas de données -> pas encore de commentaire de l'utilisateur pour cet acteur -> on propose l'ajout de commentaire
+								{ 
+									?>
+										<a href="acteur.php?act=<?php echo $actor; ?>&amp;add=1#new_post">Ajouter un commentaire public</a>
+									<?php
+								}
+								else // cet utilisateur a déjà commenté cet acteur -> Mention + lien pour supprimer le commentaire existant
+								{
+									?>
+										<div class="case_commented"><p>Vous avez commenté ce partenaire.</p><p class="splitter"> | </p><a href="../traitement/trait_commentaire.php?act=<?php echo $actor; ?>&amp;delete=1">Supprimer mon commentaire</a></div>
+									<?php
+								}
+				    		?>
+				    		
 				    		<div class="actor_like">
 				    			<?php // Gestion like/dislike, on affichera à la fois le nombre de like et le nombre de dislike, plus explicite qu'une somme des deux.
 				    				// 1) les likes
@@ -167,7 +190,22 @@
 				    	</div>
 					<div class="post_section">
 						<h4>Commentaires :</h4>
-					<?php
+						<?php
+					if(isset($_SESSION['posted']))
+					{
+						    echo '<p style=color:red;>Votre commentaire a bien été ajouté.</p>';
+						    unset($_SESSION['posted']);
+					}
+					if(isset($_SESSION['deleted_post']))
+					{
+						    echo '<p style=color:red;>Votre commentaire a bien été supprimé.</p>';
+						    unset($_SESSION['deleted_post']);
+					}
+					if(isset($_SESSION['existing_post']))
+					{
+						    echo '<p style=color:red;>Vous avez déjà commenté cet acteur, pour commenter à nouveau, supprimez votre précédent commentaire.</p>';
+						    unset($_SESSION['existing_post']);
+					}												
 					// On vérifie qu'il existe des commentaires pour cet acteur
 					$result = $db->prepare('SELECT id_actor FROM post WHERE id_actor = :actor');
 					$result->execute(array('actor' => $actor));
@@ -190,11 +228,11 @@
 					$result->execute(array('actor' => $actor));
 					while($data = $result->fetch())
 					{ // mettre htmlspecialchars
-						$nom = $data['nom'];
-						$prenom = $data['prenom'];
+						$nom = htmlspecialchars($data['nom']);
+						$prenom = htmlspecialchars($data['prenom']);
 						$date = preg_replace("#([0-9]{4})-([0-9]{2})-([0-9]{2})#","Le $3/$2/$1",$data['date_add']);
-						$post = $data['post'];
-						$photo = $data['photo']
+						$post = htmlspecialchars($data['post']);
+						$photo = htmlspecialchars($data['photo']);
 						?>
 							<div class="post">
 								<div class="post_photo"><img src="uploads/<?php echo $photo ; ?>" alt="photo"/><p> Nom : <?php echo $nom; ?></p></div>
