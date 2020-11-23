@@ -6,6 +6,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<link rel="stylesheet" href="style.css" />
+		<link rel="icon" type="image/png" href="logos/gbaf_ico.png" />
 		<title>Accueil GBAF</title>
 	</head>
 	<body>
@@ -23,7 +24,17 @@
 				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				<div class="illustration"></div> <!-- en attendant l'image -->
+				<div class="illustration">
+					<div class="illustration_logos_container">
+						<a href="#"><img src="logos/banques/BP.jpg" alt="banque_postale"/></a>
+						<a href="#"><img src="logos/banques/CA.png" alt="credit_agricole"/></a>
+						<a href="#"><img src="logos/banques/SG.png" alt="societe_generale"/></a>
+						<a href="#"><img src="logos/banques/CIC.png" alt="cic"/></a>						
+						<a href="#"><img src="logos/banques/BPCE.png" alt="bpce"/></a>
+						<a href="#"><img src="logos/banques/CM.png" alt="credit_mutuel"/></a>						
+						<a href="#"><img src="logos/banques/BNP.png" alt="bnp_paribas"/></a>
+					</div>
+				</div>
 			</div>
 			<div class="actors_list_section">
 				<div class="actors_list_intro">
@@ -44,16 +55,26 @@
 						$result = $db->query('SELECT * FROM actor');
 						while($data = $result->fetch())
 						{
-							$extract = substr($data['description'],0,150);
-							?>
-							    <div class="actor">
-							    	<div class="actor_logo"><img src="logos/<?php echo $data['logo']; ?>" alt="logo <?php echo $data['actor']; ?>"></div>
-							    		<div class="actor_description">
-								    		<h3><?php echo $data['actor']; ?></h3>
-								    		<p><?php echo $extract; ?>...</p>										    		
-								    	</div>
-								    	<a href="acteur.php?act=<?php echo $data['id_actor']; ?>">Lire la suite</a>
-							    </div>
+							$content = htmlspecialchars($data['description']);
+							$extract = explode(" ",$content);
+							?>								
+								    <div class="actor">
+								    	<div class="actor_logo_n_desc">
+								    		<div class="actor_logo"><img src="logos/<?php echo $data['logo']; ?>" alt="logo <?php echo $data['actor']; ?>"></div>
+								    			<div class="actor_description">
+									    			<h3><?php echo $data['actor']; ?></h3>
+									    			<p><?php //boucle pour écrire les 25 premiers mots
+									    			$i = 0;
+									    			while($i < 25)
+									    			{
+									    				echo $extract[$i] . ' ';
+									    				$i++;
+									    			}
+									    			?>...</p>
+									    		</div>
+									    	</div>
+									    	<a href="acteur.php?act=<?php echo $data['id_actor']; ?>">Lire la suite</a>
+								    </div>
 							<?php
 						}
 						$result->closeCursor();

@@ -6,6 +6,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<link rel="stylesheet" href="style.css" />
+		<link rel="icon" type="image/png" href="logos/gbaf_ico.png" />
 		<title>Acteur</title>
 	</head>
 	<body>
@@ -70,7 +71,7 @@
 								else // cet utilisateur a déjà commenté cet acteur -> Mention + lien pour supprimer le commentaire existant
 								{
 									?>
-										<div class="case_commented"><p>Vous avez commenté ce partenaire.</p><p class="splitter"> | </p><a href="../traitement/trait_commentaire.php?act=<?php echo $actor; ?>&amp;delete=1">Supprimer mon commentaire</a></div>
+										<div class="case_commented"><p>Vous avez commenté ce partenaire</p><p class="splitter"> | </p><a href="../traitement/trait_commentaire.php?act=<?php echo $actor; ?>&amp;delete=1">Supprimer mon commentaire</a></div>
 									<?php
 								}
 				    		?>
@@ -156,8 +157,7 @@
 									}									
 									$result->closeCursor();												
 								?>	    			
-				    			<a href="../traitement/trait_like.php?act=<?php echo $actor ?>&amp;like=1" title="
-				    			<?php 
+				    			<a href="../traitement/trait_like.php?act=<?php echo $actor ?>&amp;like=1" title="<?php 
 				    			if(!empty($like_list))
 				    			{
 					    			foreach($like_list as $name)
@@ -166,9 +166,8 @@
 					    			}					    				
 				    			}	
 				    			?>">
-				    				<?php echo '(' . $like_number . ') ' ?>like</a> / 
-				    			<a href="../traitement/trait_like.php?act=<?php echo $actor ?>&amp;like=2" title="
-				    			<?php
+				    				<?php echo '(' . $like_number . ') ' ?>Je recommande <img src="logos/like.png" class="like_button" alt="like_button"/></a> / 
+				    			<a href="../traitement/trait_like.php?act=<?php echo $actor ?>&amp;like=2" title="<?php
 				    			if(!empty($dislike_list))
 				    			{
 					    			foreach($dislike_list as $name)
@@ -177,12 +176,12 @@
 					    			}					    				
 				    			}			    			
 				    			?>">
-				    				<?php echo '(' . $dislike_number . ') ' ?>dislike</a>
+				    				<?php echo '(' . $dislike_number . ') ' ?>Je déconseille<img src="logos/dislike.png" class="dislike_button" alt="dislike_button"/></a>
 				    		</div>
 				    		<?php 
 				    				if($show) // On affiche si l'utilisateur aime ou non le partenaire avec possibilité de réinitialiser
 				    				{
-										echo '<div class="actor_like_mention"><p>' . $show . '. |  </p>'; ?>
+										echo '<div class="actor_like_mention"><p>' . $show . ' |  </p>'; ?>
 										<a href="../traitement/trait_like.php?act=<?php echo $actor ?>&amp;like=3">Réinitialiser</a></div>
 										<?php
 				    				}

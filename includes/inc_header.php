@@ -26,11 +26,11 @@
 			<div class="user_ref">
 				<!-- avatar -->
 				<div class="user_photo">
-					<a href="profil.php"><img src="uploads/<?php echo $photo ; ?>" alt="Ma photo de profil"/></a>
+					<a href="profil.php"><img src="uploads/<?php echo $photo ; ?>" alt="Ma photo de profil" title="Voir mon profil"/></a>
 				</div>
 				<!-- nom + prenom -->
 				<div class="user_name">
-					<a href="profil.php"><p><?php echo $nom . ' ' . $prenom; ?></a>
+					<a href="profil.php" title="Voir mon profil"><p><?php echo $nom . ' ' . $prenom; ?></a>
 				</div>
 				<!-- bouton déconnexion -->
 				<form class="deconnection_form" action="../traitement/trait_deconnexion.php" method="post"><input type="submit" value="deconnexion"/></form></li>				

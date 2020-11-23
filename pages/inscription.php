@@ -14,6 +14,7 @@ session_start();
 		<head>
 			<meta charset="UTF-8" />
 			<link rel="stylesheet" href="style.css" />
+			<link rel="icon" type="image/png" href="logos/gbaf_ico.png" />
 			<title>Inscription</title>
 		</head>
 		<body>
@@ -46,7 +47,7 @@ session_start();
 								    unset($_SESSION['short']);
 							}
 							?>
-							<label for="pass1">Mot de passe (8 caractères, une majuscule, un chiffre et un caractère spécial au minimum) :</label><input type="password" name="pass1" id="pass1" required/>
+							<label for="pass1">Mot de passe <span class="lower_italic">(8 caractères, une majuscule, un chiffre et un caractère spécial au minimum)</span> :</label><input type="password" name="pass1" id="pass1" required/>
 							<?php
 							if(isset($_SESSION['invalidpass']))
 							{
