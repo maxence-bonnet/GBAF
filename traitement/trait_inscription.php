@@ -1,5 +1,5 @@
 <?php
-if(isset($_POST['last_name']) AND isset($_POST['first_name']) AND isset($_POST['username']) AND isset($_POST['pass1']) AND isset($_POST['pass2']) AND isset($_POST['question']) AND isset($_POST['answer']))
+if(!empty($_POST) AND isset($_POST))
 {
 	foreach($_POST as $value => $key)
 	{

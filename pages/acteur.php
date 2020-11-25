@@ -5,6 +5,7 @@
 <html lang="fr">
 	<head>
 		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
 		<link rel="stylesheet" href="style.css" />
 		<link rel="icon" type="image/png" href="logos/gbaf_ico.png" />
 		<title>Acteur</title>
@@ -48,7 +49,8 @@
 			    	<div class="actor_full_logo"><img src="logos/<?php echo $data['logo']; ?>" alt="logo <?php echo $data['actor']; ?>"></div>
 			    		<div class="actor_full_description">
 				    		<h3><?php echo $data['actor']; ?></h3>
-				    		<p><?php echo nl2br($data['description']); ?></p>				    		
+				    		<p><?php echo nl2br($data['description']); ?></p>
+				    		<p>Vers le site de <a class="actor_external_link" href="#"><?php echo $data['actor']?></a></p>			    		
 				    	</div>
 				    </div>
 				    	<div class="actor_like_management">
@@ -71,12 +73,13 @@
 								else // cet utilisateur a déjà commenté cet acteur -> Mention + lien pour supprimer le commentaire existant
 								{
 									?>
-										<div class="case_commented"><p>Vous avez commenté ce partenaire</p><p class="splitter"> | </p><a href="../traitement/trait_commentaire.php?act=<?php echo $actor; ?>&amp;delete=1">Supprimer mon commentaire</a></div>
+										<div class="case_commented"><div class="case_commented_sub"><p>Vous avez commenté ce partenaire</p><p class="splitter"> | </p><a href="../traitement/trait_commentaire.php?act=<?php echo $actor; ?>&amp;delete=1">Supprimer mon commentaire</a></div></div>
 									<?php
 								}
 				    		?>
 				    		
 				    		<div class="actor_like">
+				    			<div class="actor_like_sub">
 				    			<?php // Gestion like/dislike, on affichera à la fois le nombre de like et le nombre de dislike, plus explicite qu'une somme des deux.
 				    				// 1) les likes
 									$result = $db->prepare('SELECT COUNT(*) AS like_number FROM vote WHERE id_actor = :actor AND vote = :like_');
@@ -118,11 +121,11 @@
 											$vote = htmlspecialchars($data3['vote']);
 											if($vote == 'like')
 											{
-												$show = 'Vous aimez ce partenaire';
+												$show = 'Vous recommandez ce partenaire';
 											}
 											if($vote == 'dislike')
 											{
-												$show = 'Vous n\'aimez pas ce partenaire';
+												$show = 'Vous déconsillez ce partenaire';
 											}
 										}
 										else // pas de raison de que ça arrive mais au cas où
@@ -166,7 +169,8 @@
 					    			}					    				
 				    			}	
 				    			?>">
-				    				<?php echo '(' . $like_number . ') ' ?>Je recommande <img src="logos/like.png" class="like_button" alt="like_button"/></a> / 
+				    				<?php echo '(' . $like_number . ') ' ?>Je recommande <img src="logos/like.png" class="like_button" alt="like_button"/></a>
+				    			<p class="splitter"> | </p> 
 				    			<a href="../traitement/trait_like.php?act=<?php echo $actor ?>&amp;like=2" title="<?php
 				    			if(!empty($dislike_list))
 				    			{
@@ -177,12 +181,13 @@
 				    			}			    			
 				    			?>">
 				    				<?php echo '(' . $dislike_number . ') ' ?>Je déconseille<img src="logos/dislike.png" class="dislike_button" alt="dislike_button"/></a>
+				    			</div>
 				    		</div>
 				    		<?php 
 				    				if($show) // On affiche si l'utilisateur aime ou non le partenaire avec possibilité de réinitialiser
 				    				{
-										echo '<div class="actor_like_mention"><p>' . $show . ' |  </p>'; ?>
-										<a href="../traitement/trait_like.php?act=<?php echo $actor ?>&amp;like=3">Réinitialiser</a></div>
+										echo '<div class="actor_like_mention"><div class="actor_like_mention_sub"><p>' . $show . '</p><p class="splitter"> |  </p>'; ?>
+										<a href="../traitement/trait_like.php?act=<?php echo $actor ?>&amp;like=3">Réinitialiser</a></div></div>
 										<?php
 				    				}
 				    		?>			    	
@@ -235,7 +240,7 @@
 						?>
 							<div class="post">
 								<div class="post_photo"><img src="uploads/<?php echo $photo ; ?>" alt="photo"/></div>
-								<p><?php echo $date; ?>, <?php echo $prenom; ?> <?php echo $nom; ?> a commenté :</p>
+								<p class="user_post_ref"><?php echo $date; ?>, <?php echo $prenom; ?> <?php echo $nom; ?> a commenté :</p>
 								<p><?php echo nl2br($post); ?></p>
 							</div>
 						<?php
@@ -254,8 +259,7 @@
 					<input type="submit" name="new_post_submit" value="Publier"/>
 				</form>
 				<?php
-			}
-		
+			}	
 		}
 		else
 		{

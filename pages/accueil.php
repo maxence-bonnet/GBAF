@@ -5,6 +5,7 @@
 <html lang="fr">
 	<head>
 		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
 		<link rel="stylesheet" href="style.css" />
 		<link rel="icon" type="image/png" href="logos/gbaf_ico.png" />
 		<title>Accueil GBAF</title>
@@ -18,12 +19,7 @@
 			?>
 			<div class="presentation_section">
 				<h1>Groupement Banque-Assurance Français</h1>
-				<p>lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				<p>Le GBAF représente les professions bancaires et de l'assurance sur tous les axes de la réglementation financière française. Sa mission est de promouvoir l'activité bancaire à l'échelle nationale. Il est également un interlocuteur privilégié des pourvoirs publics. Il est le fruit de l'association de 6 grands groupes français : BNP Paribas, BPCE, Crédit Agricole, Crédit Mutuel-CIC, Société Générale, La Banque Postale.</p>
 				<div class="illustration">
 					<div class="illustration_logos_container">
 						<a href="#"><img src="logos/banques/BP.jpg" alt="banque_postale"/></a>
@@ -39,9 +35,7 @@
 			<div class="actors_list_section">
 				<div class="actors_list_intro">
 					<h2>Les acteurs et partenaires</h2>
-						<p>lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-						quis nostrud exercitation ullamco laboris</p>
+						<p>Une liste complète des différents partenaires avec qui nous sommes susceptibles de collaborer. Vous pourrez ici vous renseigner sur chacun d'entre eux, consulter les avis de confrères, ou y laisser votre propre commentaire afin d'échanger des appréciations constructives et de distinguer les qualités et compétences de chacun de ces partenaires.</p>
 				</div>					
 					<?php // Récupération des extraits de tous les partenaires
 						try
@@ -70,10 +64,10 @@
 									    				echo $extract[$i] . ' ';
 									    				$i++;
 									    			}
-									    			?>...</p>
+									    			?>... </p><p>Vers le site de <a class="actor_external_link" href="#"><?php echo $data['actor']?></a></p>
 									    		</div>
 									    	</div>
-									    	<a href="acteur.php?act=<?php echo $data['id_actor']; ?>">Lire la suite</a>
+									    	<a class="actor_read_more" href="acteur.php?act=<?php echo $data['id_actor']; ?>">Lire la suite</a>
 								    </div>
 							<?php
 						}
@@ -100,7 +94,7 @@
 					?>
 					<form class="connection_form" action="accueil.php?fgt=2" method="post">
 						<fieldset>
-							<legend>Réinitialiser le mot de passe :</legend>
+							<legend class="long_legend">Réinitialiser le mot de passe :</legend>
 
 								<label for="username">Veuillez saisir votre nom d'utilisateur :</label><input type="text" name="username" id="username"/>
 
@@ -123,7 +117,7 @@
 						?>
 						<form class="connection_form" action="accueil.php?fgt=3" method="post">
 							<fieldset>
-								<legend>Réinitialiser le mot de passe :</legend>
+								<legend class="long_legend">Réinitialiser le mot de passe :</legend>
 
 									<?php 
 										$result = $db->prepare('SELECT question FROM account WHERE username = :username');
@@ -136,7 +130,7 @@
 
 									<label for="answer"><?php echo $question ?> </label><input type="text" name="answer" id="answer"/>
 
-									<label for="pass1">Nouveau mot de passe (8 caractères, une majuscule, un chiffre et un caractère spécial au minimum) :</label><input type="password" name="pass1" id="pass1"/>
+									<label for="pass1">Nouveau mot de passe <span class="lower_italic">(8 caractères, une majuscule, un chiffre et un caractère spécial au minimum)</span> :</label><input type="password" name="pass1" id="pass1"/>
 
 									<label for="pass2">Confirmation du mot de passe :</label><input type="password" name="pass2" id="pass2"/>
 
