@@ -160,8 +160,8 @@
 					$result->closeCursor();
 					if($data)
 					{
-						$reponse1 = $data['reponse'];
-						$reponse2 = htmlspecialchars($_POST['answer']);
+						$reponse = htmlspecialchars($_POST['answer']);
+						$testanswer = password_verify($reponse,$data['reponse']);
 						if($reponse1 == $reponse2)// 5) Bonne réponse, on vérifie le format des mots de passe
 						{
 							$pass1 = htmlspecialchars($_POST['pass1']);
