@@ -64,7 +64,7 @@ session_start();
 								    unset($_SESSION['passnotmatching']);
 							}					
 							?>
-							<label for="question">Question secrète :</label><input type="text" name="question" id="question" required/>
+							<label for="question">Question secrète <span class="lower_italic">(exemple : Quel est le nom de mon premier animal de compagnie ?)</span> :</label><input type="text" name="question" id="question" required/>
 
 							<label for="answer">Réponse à la question secrète :</label><input type="text" name="answer" id="answer" required/>
 

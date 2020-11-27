@@ -1,11 +1,9 @@
 <div class="header_content">
-	<!-- logo GBAF -->
 	<div class="logo_gbaf">
 		<a href="accueil.php"><img src="../pages/logos/gbaf.png" title="GBAF"alt="GBAF logo"/></a>
 	</div>
-	<!-- Photo & Nom + Prenom -->
 	<?php
-		if(isset($_SESSION['last_name']) AND isset($_SESSION['first_name']) AND (isset($_SESSION['username']))) //si session active
+		if(isset($_SESSION['username']) AND !empty($_SESSION['username'])) //si session active
 		{
 			try
 			{
@@ -24,16 +22,13 @@
 			$photo = htmlspecialchars($data['photo']); //éléments par défaut
 			?>
 			<div class="user_ref">
-				<!-- avatar -->
 				<div class="user_photo">
 					<a href="profil.php"><img src="uploads/<?php echo $photo ; ?>" alt="Ma photo de profil" title="Voir mon profil"/></a>
 				</div>
-				<!-- nom + prenom -->
 				<div class="user_name">
-					<a href="profil.php" title="Voir mon profil"><p><?php echo $nom . ' ' . $prenom; ?></a>
+					<a href="profil.php" title="Voir mon profil"><p><?php echo $prenom . ' ' . $nom; ?></p></a>
 				</div>
-				<!-- bouton déconnexion -->
-				<form class="deconnection_form" action="../traitement/trait_deconnexion.php" method="post"><input type="submit" value="deconnexion"/></form></li>				
+				<form class="deconnection_form" action="../traitement/trait_deconnexion.php" method="post"><input type="submit" value="deconnexion"/></form>				
 			</div>
 			<?php
 		}

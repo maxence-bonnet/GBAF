@@ -1,11 +1,10 @@
 <?php
 session_start();
-if(isset($_SESSION['username']) AND isset($_GET['like'])  AND isset($_GET['act'])) // on vérifie la connexion et les paramètres (n° acteur et type de type like)
+if(isset($_SESSION['username']) AND isset($_GET['like'])  AND isset($_GET['act'])) // on vérifie la connexion et les paramètres (n° acteur et type de like)
 {
 	$likerequest = htmlspecialchars($_GET['like']);
 	if($likerequest >= 1 AND $likerequest <= 3)// si la demande est valide
 	{
-		//connexion
 		try
 		{
 		$db = new PDO('mysql:host=localhost;dbname=gbaf;charset=utf8', 'root', '');

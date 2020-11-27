@@ -1,7 +1,7 @@
 <?php
 if(!empty($_POST) AND isset($_POST))
 {
-	foreach($_POST as $value => $key)
+	foreach($_POST as $value => $key) // htmlspecialchars pour tout le monde
 	{
 		$_POST[$value] = htmlspecialchars($_POST[$value]);
 	}
@@ -43,8 +43,9 @@ if(!empty($_POST) AND isset($_POST))
 	{
 		// pas d'erreur = écriture dans la bdd
 		$pass=password_hash($_POST['pass1'],PASSWORD_DEFAULT);
+		$answer=password_hash($_POST['question'],PASSWORD_DEFAULT);
 		$query = $db->prepare('INSERT INTO account(nom, prenom, username, password, question, reponse) VALUES(:nom, :prenom, :username, :pass, :question, :answer)');
-		$query->execute(array('nom' => $_POST['last_name'], 'prenom' => $_POST['first_name'], 'username' => $_POST['username'], 'pass' => $pass, 'question' => $_POST['question'], 'answer' => $_POST['answer']));
+		$query->execute(array('nom' => $_POST['last_name'], 'prenom' => $_POST['first_name'], 'username' => $_POST['username'], 'pass' => $pass, 'question' => $_POST['question'], 'answer' => $answer));
 		$query->closeCursor();
 		// envoi d'une notification confirmation de l'inscription
 		session_start();

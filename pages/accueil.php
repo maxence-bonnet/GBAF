@@ -14,7 +14,7 @@
 	<?php include("../includes/inc_header.php"); ?>
 		<div class ="content accueil_content">
 		<?php
-		if(isset($_SESSION['last_name']) AND isset($_SESSION['first_name']) AND isset($_SESSION['username']))
+		if(isset($_SESSION['username']) AND !empty($_SESSION['username']))
 		{ 
 			?>
 			<div class="presentation_section">
@@ -37,7 +37,7 @@
 					<h2>Les acteurs et partenaires</h2>
 						<p>Une liste complète des différents partenaires avec qui nous sommes susceptibles de collaborer. Vous pourrez ici vous renseigner sur chacun d'entre eux, consulter les avis de confrères, ou y laisser votre propre commentaire afin d'échanger des appréciations constructives et de distinguer les qualités et compétences de chacun de ces partenaires.</p>
 				</div>					
-					<?php // Récupération des extraits de tous les partenaires
+					<?php // Récupération des infos et extraits de tous les partenaires
 						try
 						{
 						$db = new PDO('mysql:host=localhost;dbname=gbaf;charset=utf8', 'root', '');
@@ -56,8 +56,8 @@
 								    	<div class="actor_logo_n_desc">
 								    		<div class="actor_logo"><img src="logos/<?php echo $data['logo']; ?>" alt="logo <?php echo $data['actor']; ?>"></div>
 								    			<div class="actor_description">
-									    			<h3><?php echo $data['actor']; ?></h3>
-									    			<p><?php //boucle pour écrire les 25 premiers mots
+									    			<h3><?php echo $data['actor']; ?></h3>									    			
+									    			<p><?php /* boucle pour écrire les 25 premiers mots pour un rendu plus homogène, si on veut exactement la première phrase on demande d'afficher $phrase où $phrase = strtok($content,"."); mais résultat pas terrible si phrase trop courte. */
 									    			$i = 0;
 									    			while($i < 25)
 									    			{

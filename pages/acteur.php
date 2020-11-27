@@ -32,8 +32,6 @@
 			if(!$data)// si le $_GET['act'] est incorrect / inexistant
 			{
 				?>
-				<!-- choisir un affichage par défaut si le $_GET['act'] existe mais n'est pas valide :
-					afficher la liste complète des acteurs comme à l'accueil ?-->
 				<?php
 				header('Location: accueil.php');
 			}
@@ -54,7 +52,6 @@
 				    	</div>
 				    </div>
 				    	<div class="actor_like_management">
-				    		<!-- Affichage conditionnel ("ajouter un commentaire" si l'utilisateur n'en a pas encore mis / "Vous avez commenté cet acteur" + "supprimer mon commentaire" si un commentaire est présent) -->
 				    		<?php // On vérifie si l'utilisateur a déjà posté un commentaire pour cet acteur
 		    					$result = $db->prepare('SELECT account.id_user, username, post.id_user, id_actor
 														FROM account
@@ -132,7 +129,6 @@
 										{
 										$show = false;
 										}
-									// Bonus veut afficher en infobulle la liste des personnes qui aiment / n'aiment pas le partenaire
 									// 1) Ceux qui like
 									$result = $db->prepare('SELECT account.id_user, nom, prenom, vote.id_user, id_actor, vote 
 															FROM vote

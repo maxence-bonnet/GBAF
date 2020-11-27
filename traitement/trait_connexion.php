@@ -23,7 +23,7 @@ if(isset($_POST['username']) AND isset($_POST['password']) AND !empty($_POST['us
 		$_SESSION['username'] = $content['username'];
 		header('Location: ../pages/accueil.php');
 	}
-	else
+	else // mauvais identifiant ou mot de passe
 	{
 		session_start();
 		$_SESSION['wrong'] = true ;

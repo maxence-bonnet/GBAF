@@ -40,7 +40,6 @@ if(isset($_SESSION['username'])) // si connexion active
 				// format mot de passe invalide
 				$error[] = 'short';			
 			}
-			// RAJOUTER UN TEST POUR EMPECHER L'IDENTIFIANT DE CONTENIR DES ESPACES
 			elseif($data)
 			{
 				// username existant
