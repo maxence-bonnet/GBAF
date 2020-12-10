@@ -15,7 +15,7 @@ if(isset($_SESSION['username'])) // si connexion active
 	{
 	        die('Erreur : ' . $e->getMessage());
 	}
-	// On vérifie l'identité de username actuel (on sait jamais)
+	// On vérifie l'identité de username actuel
 	$result = $db->prepare('SELECT id_user FROM account WHERE username = :username');
 	$result->execute(array('username' => $username));
 	$data = $result->fetch();
@@ -24,7 +24,7 @@ if(isset($_SESSION['username'])) // si connexion active
 	{
 		header('Location: ../pages/accueil.php');
 	}
-	else // si tout se passe bien
+	else
 	{
 		$id_user = htmlspecialchars($data['id_user']);
 		// Gestion du changement d'identifiant
@@ -107,12 +107,12 @@ if(isset($_SESSION['username'])) // si connexion active
 				$actual_filename = htmlspecialchars($data['photo']);
 				if($actual_filename != 'default.png')
 				{
-					unlink(realpath('C:/xampp/htdocs/GBAF/pages/uploads/' . $actual_filename));
+					unlink(realpath('C:/xampp/htdocs/Projet_3_GBAF/GBAF/pages/uploads/' . $actual_filename));
 				}
 				// On place l'image dans le dossier uploads				
 				$uploaddir = '../pages/uploads/';
 				$filename = basename($_FILES['photo']['name']);
-				$filename = rand(0,9999999) . preg_replace("#\s#","_",$filename);
+				$filename = rand(0,99999999999) . preg_replace("#\s#","_",$filename);
 				$uploadfile = $uploaddir . $filename;
 				move_uploaded_file($_FILES['photo']['tmp_name'], $uploadfile);
 				$req = $db->prepare('UPDATE account SET photo = :filename WHERE id_user = :id_user');
@@ -122,24 +122,24 @@ if(isset($_SESSION['username'])) // si connexion active
 				if($extension_upload == 'jpeg' OR $extension_upload == 'jpg')
 				{
 					$source = imagecreatefromjpeg('../pages/uploads/' . $filename);
-					$destination = imagecreatetruecolor(150, 150);
-					$largeur_source = imagesx($source);
-					$hauteur_source = imagesy($source);
-					$largeur_destination = imagesx($destination);
-					$hauteur_destination = imagesy($destination);
-					imagecopyresampled($destination, $source, 0, 0, 0, 0, $largeur_destination, $hauteur_destination, $largeur_source, $hauteur_source);
-					imagejpeg($destination,'../pages/uploads/' . $filename);				
+					$target = imagecreatetruecolor(150, 150);
+					$source_width= imagesx($source);
+					$source_height = imagesy($source);
+					$target_width = imagesx($target);
+					$target_height = imagesy($target);
+					imagecopyresampled($target, $source, 0, 0, 0, 0, $target_width, $target_height, $source_width, $source_height);					
+					imagejpeg($target,'../pages/uploads/' . $filename);			
 				}
 				elseif($extension_upload == 'png' )
 				{
 					$source = imagecreatefrompng('../pages/uploads/' . $filename);
-					$destination = imagecreatetruecolor(150, 150);
-					$largeur_source = imagesx($source);
-					$hauteur_source = imagesy($source);
-					$largeur_destination = imagesx($destination);
-					$hauteur_destination = imagesy($destination);
-					imagecopyresampled($destination, $source, 0, 0, 0, 0, $largeur_destination, $hauteur_destination, $largeur_source, $hauteur_source);
-					imagepng($destination,'../pages/uploads/' . $filename);
+					$target = imagecreatetruecolor(150, 150);
+					$source_width= imagesx($source);
+					$source_height = imagesy($source);
+					$target_width = imagesx($target);
+					$target_height = imagesy($target);
+					imagecopyresampled($target, $source, 0, 0, 0, 0, $target_width, $target_height, $source_width, $source_height);					
+					imagepng($target,'../pages/uploads/' . $filename);
 				}
 
 			$req = $db->prepare('UPDATE account SET photo = :filename WHERE id_user = :id_user');
@@ -149,7 +149,6 @@ if(isset($_SESSION['username'])) // si connexion active
 		}
 		// retour à la page de profil
 		header('Location: ../pages/profil.php');
-		// echo 'Coucou, ça servira';
 	}
 	if(isset($error))
 	{

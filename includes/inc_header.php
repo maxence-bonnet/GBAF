@@ -3,7 +3,7 @@
 		<a href="accueil.php"><img src="../pages/logos/gbaf.png" title="GBAF"alt="GBAF logo"/></a>
 	</div>
 	<?php
-		if(isset($_SESSION['username']) AND !empty($_SESSION['username'])) //si session active
+		if(isset($_SESSION['username'])) //si session active
 		{
 			try
 			{
@@ -23,10 +23,10 @@
 			?>
 			<div class="user_ref">
 				<div class="user_photo">
-					<a href="profil.php"><img src="uploads/<?php echo $photo ; ?>" alt="Ma photo de profil" title="Voir mon profil"/></a>
+					<a href="profil.php"><img src="uploads/<?= $photo ; ?>" alt="Ma photo de profil" title="Voir mon profil"/></a>
 				</div>
 				<div class="user_name">
-					<a href="profil.php" title="Voir mon profil"><p><?php echo $prenom . ' ' . $nom; ?></p></a>
+					<a href="profil.php" title="Voir mon profil"><p><?= $prenom . ' ' . $nom; ?></p></a>
 				</div>
 				<form class="deconnection_form" action="../traitement/trait_deconnexion.php" method="post"><input type="submit" value="deconnexion"/></form>				
 			</div>

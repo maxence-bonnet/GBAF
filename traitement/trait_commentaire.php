@@ -1,6 +1,6 @@
 <?php
 	session_start();
-if(isset($_GET['act']) AND isset($_SESSION['username'])) // Si il y a bien un paramètre de référence acteur et une connexion
+if(isset($_GET['act']) AND isset($_SESSION['username'])) // S'il y a bien un paramètre de référence acteur et une connexion
 {
 	$actor = htmlspecialchars($_GET['act']);
 	$username = htmlspecialchars($_SESSION['username']);	
@@ -18,7 +18,6 @@ if(isset($_GET['act']) AND isset($_SESSION['username'])) // Si il y a bien un pa
 	$data = $result->fetch();
 	if(!$data)// référence dans $_GET['act'] inexistante dans la bdd 
 	{
-		// retour à l'accueil, pas mieux pour l'instant
 		header('Location: ../pages/accueil.php');
 	}
 	// 1) On va récupérer l'identifiant utilisateur via username

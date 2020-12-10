@@ -11,7 +11,7 @@ if(isset($_SESSION['username'])) // si connexion active
 	        die('Erreur : ' . $e->getMessage());
 	}
 	$username = htmlspecialchars($_SESSION['username']);
-	$result = $db->prepare('SELECT username, nom, prenom, password, photo FROM account WHERE username = :username');
+	$result = $db->prepare('SELECT username, nom, prenom, photo FROM account WHERE username = :username');
 	$result->execute(array('username' => $username));
 	$data = $result->fetch();
 	$result->closeCursor();
@@ -22,7 +22,6 @@ if(isset($_SESSION['username'])) // si connexion active
 	$last_name = $data['nom'];
 	$first_name = $data['prenom'];
 	$photo = $data['photo'];
-	$password = $data['password'];
 	?>
 		<!DOCTYPE html>
 		<html lang="fr">
@@ -41,14 +40,14 @@ if(isset($_SESSION['username'])) // si connexion active
 							<legend>Mon profil</legend>
 							<div class="actual_profile">
 								<div class="actual_profile_part1">								
-									<p>Mon nom (fixe) : <?php echo $last_name ?></p>
-									<p>Mon prénom (fixe) : <?php echo $first_name ?></p>
-									<p>Mon identifiant : <?php echo $username ?></p>
+									<p>Mon nom (fixe) : <?= $last_name ?></p>
+									<p>Mon prénom (fixe) : <?= $first_name ?></p>
+									<p>Mon identifiant : <?= $username ?></p>
 								</div>
 								<div class="actual_profile_part2">								
 									<div class="photo">
 										<p>Ma photo de profil : </p>
-										<img src="uploads/<?php echo $photo ; ?>" alt="Ma photo de profil"/>
+										<img src="uploads/<?= $photo ; ?>" alt="Ma photo de profil"/>
 									</div>
 								</div>
 							</div>

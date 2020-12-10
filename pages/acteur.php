@@ -37,18 +37,18 @@
 			}
 			else // $_GET['act'] renvoie a une valeur existante dans les ID des acteurs
 			{
-				//affiche le contenu de l'acteur act=x, les likes/dislike et les commentaires associés 
+				//affiche le contenu de l'acteur act=x, les like/dislike et les commentaires associés 
 				$result = $db->prepare('SELECT * FROM actor WHERE id_actor = :actor');
 				$result->execute(array('actor' => $actor));
 				$data = $result->fetch();
 				$result->closeCursor();
 				?>
 				<div class="actor_full">
-			    	<div class="actor_full_logo"><img src="logos/<?php echo $data['logo']; ?>" alt="logo <?php echo $data['actor']; ?>"></div>
+			    	<div class="actor_full_logo"><img src="logos/<?= $data['logo']; ?>" alt="logo <?= $data['actor']; ?>"></div>
 			    		<div class="actor_full_description">
-				    		<h3><?php echo $data['actor']; ?></h3>
-				    		<p><?php echo nl2br($data['description']); ?></p>
-				    		<p>Vers le site de <a class="actor_external_link" href="#"><?php echo $data['actor']?></a></p>			    		
+				    		<h3><?= $data['actor']; ?></h3>
+				    		<p><?= nl2br($data['description']); ?></p>
+				    		<p>Vers le site de <a class="actor_external_link" href="#"><?= $data['actor']?></a></p>			    		
 				    	</div>
 				    </div>
 				    	<div class="actor_like_management">
@@ -64,13 +64,13 @@
 								if(!$data)// pas de données -> pas encore de commentaire de l'utilisateur pour cet acteur -> on propose l'ajout de commentaire
 								{ 
 									?>
-										<a href="acteur.php?act=<?php echo $actor; ?>&amp;add=1#new_post">Ajouter un commentaire public</a>
+										<a href="acteur.php?act=<?= $actor; ?>&amp;add=1#new_post">Ajouter un commentaire public</a>
 									<?php
 								}
 								else // cet utilisateur a déjà commenté cet acteur -> Mention + lien pour supprimer le commentaire existant
 								{
 									?>
-										<div class="case_commented"><div class="case_commented_sub"><p>Vous avez commenté ce partenaire</p><p class="splitter"> | </p><a href="../traitement/trait_commentaire.php?act=<?php echo $actor; ?>&amp;delete=1">Supprimer mon commentaire</a></div></div>
+										<div class="case_commented"><div class="case_commented_sub"><p>Vous avez commenté ce partenaire</p><p class="splitter"> | </p><a href="../traitement/trait_commentaire.php?act=<?= $actor; ?>&amp;delete=1">Supprimer mon commentaire</a></div></div>
 									<?php
 								}
 				    		?>
@@ -82,22 +82,29 @@
 									$result = $db->prepare('SELECT COUNT(*) AS like_number FROM vote WHERE id_actor = :actor AND vote = :like_');
 									$result->execute(array('actor' => $actor, 'like_' => 'like'));
 									$data1 = $result->fetch();
-									$result->closeCursor();
-									$like_number = $data1['like_number'];
+									$result->closeCursor();									
 									// 2) les dislikes
 									$result = $db->prepare('SELECT COUNT(*) AS dislike_number FROM vote WHERE id_actor = :actor AND vote = :dislike_');
 									$result->execute(array('actor' => $actor, 'dislike_' => 'dislike'));
 									$data2 = $result->fetch();
-									$result->closeCursor();
-									$dislike_number = $data2['dislike_number'];
+									$result->closeCursor();									
 									// 3) S'il n'y pas encore de like ou dislike on paramètre les variables à 0
 									if(!$data1)
 									{
 										$like_number = 0;
 									}
+									else
+									{
+										$like_number = $data1['like_number'];
+									}
+									
 									if(!$data2)
 									{
 										$dislike_number = 0;
+									}
+									else
+									{
+										$dislike_number = $data2['dislike_number'];
 									}
 									// 4) Affichage personnalisé si l'utilisateur a déjà mis un like / dislike 
 										$result = $db->prepare('SELECT account.id_user, username, vote.id_user, id_actor, vote 
@@ -109,26 +116,27 @@
 										$result->execute(array('username' => $username, 'actor' => $actor));
 										$data3 = $result->fetch();
 										$result->closeCursor();
-										if(!$data3)// s'il n'y a aucun lien entre l'utilisateur et cet ateur pour le moment
+										if(!$data3)// si l'utilisateur n'a pas ajouté de mention like / dislike pour cet acteur
 										{
 											$show = false;
 										}
-										elseif(isset($data3['vote']))// il y a soit un like soit un dislike /isset($data3['vote']) AND $data3['vote'] != 0
+										elseif(isset($data3['vote']))// il y a soit un like soit un dislike
 										{
 											$vote = htmlspecialchars($data3['vote']);
 											if($vote == 'like')
 											{
 												$show = 'Vous recommandez ce partenaire';
 											}
-											if($vote == 'dislike')
+											elseif($vote == 'dislike')
 											{
-												$show = 'Vous déconsillez ce partenaire';
+												$show = 'Vous déconseillez ce partenaire';
 											}
 										}
 										else // pas de raison de que ça arrive mais au cas où
 										{
 										$show = false;
 										}
+									// On dresse la liste des utilisateurs qui ont like / dislike l'acteur actuel pour qu'elle s'affiche dans l'infobulle du lien
 									// 1) Ceux qui like
 									$result = $db->prepare('SELECT account.id_user, nom, prenom, vote.id_user, id_actor, vote 
 															FROM vote
@@ -156,7 +164,7 @@
 									}									
 									$result->closeCursor();												
 								?>	    			
-				    			<a href="../traitement/trait_like.php?act=<?php echo $actor ?>&amp;like=1" title="<?php 
+				    			<a href="../traitement/trait_like.php?act=<?= $actor ?>&amp;like=1" title="<?php 
 				    			if(!empty($like_list))
 				    			{
 					    			foreach($like_list as $name)
@@ -165,9 +173,9 @@
 					    			}					    				
 				    			}	
 				    			?>">
-				    				<?php echo '(' . $like_number . ') ' ?>Je recommande <img src="logos/like.png" class="like_button" alt="like_button"/></a>
+				    				<?= '(' . $like_number . ') ' ?>Je recommande <img src="logos/like.png" class="like_button" alt="like_button"/></a>
 				    			<p class="splitter"> | </p> 
-				    			<a href="../traitement/trait_like.php?act=<?php echo $actor ?>&amp;like=2" title="<?php
+				    			<a href="../traitement/trait_like.php?act=<?= $actor ?>&amp;like=2" title="<?php
 				    			if(!empty($dislike_list))
 				    			{
 					    			foreach($dislike_list as $name)
@@ -176,14 +184,14 @@
 					    			}					    				
 				    			}			    			
 				    			?>">
-				    				<?php echo '(' . $dislike_number . ') ' ?>Je déconseille<img src="logos/dislike.png" class="dislike_button" alt="dislike_button"/></a>
+				    				<?= '(' . $dislike_number . ') ' ?>Je déconseille<img src="logos/dislike.png" class="dislike_button" alt="dislike_button"/></a>
 				    			</div>
 				    		</div>
 				    		<?php 
 				    				if($show) // On affiche si l'utilisateur aime ou non le partenaire avec possibilité de réinitialiser
 				    				{
 										echo '<div class="actor_like_mention"><div class="actor_like_mention_sub"><p>' . $show . '</p><p class="splitter"> |  </p>'; ?>
-										<a href="../traitement/trait_like.php?act=<?php echo $actor ?>&amp;like=3">Réinitialiser</a></div></div>
+										<a href="../traitement/trait_like.php?act=<?= $actor ?>&amp;like=3">Réinitialiser</a></div></div>
 										<?php
 				    				}
 				    		?>			    	
@@ -227,7 +235,7 @@
 											ORDER BY date_add');
 					$result->execute(array('actor' => $actor));
 					while($data = $result->fetch())
-					{ // mettre htmlspecialchars
+					{
 						$nom = htmlspecialchars($data['nom']);
 						$prenom = htmlspecialchars($data['prenom']);
 						$date = preg_replace("#([0-9]{4})-([0-9]{2})-([0-9]{2}) ([0-9]{2}:[0-9]{2}:[0-9]{2})#","Le $3/$2/$1",$data['date_add']);
@@ -235,9 +243,9 @@
 						$photo = htmlspecialchars($data['photo']);
 						?>
 							<div class="post">
-								<div class="post_photo"><img src="uploads/<?php echo $photo ; ?>" alt="photo"/></div>
-								<p class="user_post_ref"><?php echo $date; ?>, <?php echo $prenom; ?> <?php echo $nom; ?> a commenté :</p>
-								<p><?php echo nl2br($post); ?></p>
+								<div class="post_photo"><img src="uploads/<?= $photo ; ?>" alt="photo"/></div>
+								<p class="user_post_ref"><?= $date; ?>, <?= $prenom; ?> <?= $nom; ?> a commenté :</p>
+								<p><?= nl2br($post); ?></p>
 							</div>
 						<?php
 					}
@@ -250,7 +258,7 @@
 			if(isset($_GET['add']) AND $_GET['add'] == 1)
 			{
 				?>
-				<form class="add_post" action="../traitement/trait_commentaire.php?act=<?php echo $actor; ?>" method="post">
+				<form class="add_comment" action="../traitement/trait_commentaire.php?act=<?= $actor; ?>" method="post">
 					<label for="new_post">Votre commentaire : </label><textarea name="new_post" id="new_post"></textarea>
 					<input type="submit" name="new_post_submit" value="Publier"/>
 				</form>
@@ -260,7 +268,7 @@
 		else
 		{
 			// utilisateur non connecté renvoyé page accueil (connexion)
-			header('Location: accueil.php');
+			header('Location: connexion.php');
 		}
 		?>
 		</div>

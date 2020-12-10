@@ -1,5 +1,12 @@
 <?php
-if(!empty($_POST) AND isset($_POST))
+if(isset($_POST) AND !empty($_POST['last_name']) 
+				AND !empty($_POST['first_name'])
+				AND !empty($_POST['username'])
+				AND !empty($_POST['pass1'])
+				AND !empty($_POST['pass2'])
+				AND !empty($_POST['pass2'])
+				AND !empty($_POST['question'])
+				AND !empty($_POST['answer']))
 {
 	foreach($_POST as $value => $key) // htmlspecialchars pour tout le monde
 	{
@@ -23,7 +30,6 @@ if(!empty($_POST) AND isset($_POST))
 		// username existant
 		$error[] = 'exist';
 	}
-	// RAJOUTER UN TEST POUR EMPECHER L'IDENTIFIANT DE CONTENIR DES ESPACES
 	if(strlen($_POST['username']) < 3)
 	{
 		// username trop court
@@ -43,11 +49,11 @@ if(!empty($_POST) AND isset($_POST))
 	{
 		// pas d'erreur = écriture dans la bdd
 		$pass=password_hash($_POST['pass1'],PASSWORD_DEFAULT);
-		$answer=password_hash($_POST['question'],PASSWORD_DEFAULT);
+		$answer=password_hash($_POST['answer'],PASSWORD_DEFAULT);
 		$query = $db->prepare('INSERT INTO account(nom, prenom, username, password, question, reponse) VALUES(:nom, :prenom, :username, :pass, :question, :answer)');
 		$query->execute(array('nom' => $_POST['last_name'], 'prenom' => $_POST['first_name'], 'username' => $_POST['username'], 'pass' => $pass, 'question' => $_POST['question'], 'answer' => $answer));
 		$query->closeCursor();
-		// envoi d'une notification confirmation de l'inscription
+		// envoi d'une notification qui confirme l'inscription
 		session_start();
 		$_SESSION['success'] = true;
 		header('Location: ../pages/accueil.php');

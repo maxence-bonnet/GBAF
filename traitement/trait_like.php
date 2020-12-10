@@ -26,7 +26,7 @@ if(isset($_SESSION['username']) AND isset($_GET['like'])  AND isset($_GET['act']
 		$result->execute(array('actor' => $actor));
 		$data2 = $result->fetch();
 		$result->closeCursor();
-		if(!$data1 OR !$data2)// si au moins un des deux est inexistant : problème -> on quitte -> terminé
+		if(!$data1 OR !$data2)// si au moins un des deux est inexistant : problème -> retour accueil
 		{
 			header('Location: ../pages/accueil.php');
 		}
