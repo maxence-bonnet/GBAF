@@ -59,6 +59,7 @@ Par page :
 
 - Page de contact : vide par défaut.
 
+- style.css : apparence du site avec 3 points de rupture (900px / 768px / 480px) pour adaptation responsive.
 
 Structure :
 
@@ -67,6 +68,7 @@ Le dossier Pages contient les différents pages du site (majoritairement en html
 		un dossier logos qui contient les images fixes du site, 
 		un dossier font pour les polices d'écriture,
 		un dossier uploads pour stocker les photos de profil utilisateur.
+		le fichier style.css qui définira l'apparence du site.
 Le dossier traitement contient tous les fichiers relatifs à l'execution de requêtes SQL et autres vérifications PHP qui seront appelées par les pages.
 
 
