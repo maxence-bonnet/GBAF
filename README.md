@@ -37,8 +37,11 @@ Par page :
 			mot de passe et réponse à la question secrète hashées avant écriture dans la base de données.
 
 - Page de réinitialisation du mot de passe : formulaire de réinitialisation par étape,
+
 						étape 1 : demande de l'identifiant (puis vérification de son existance)
+
 						étape 2 : envoi de la question, formulaire demandant la réponse, le nouveau mot de passe et confirmation du mot de passe.
+
 						étape 3 : si les informations sont valides, renvoi vers page de connexion, sinon message d'erreur.
 
 
@@ -48,7 +51,7 @@ Par page :
 		nombre de recommandations pour cet acteur (like/dislike) et liste des utilisateurs ayant recommandé / déconseillé en infobulle, 
 		possibilité d'ajouter une recommandation (unique) pour l'utilisateur en cours ou de la supprimer / inverser,
 		possibilité d'ajouter un commentaire (unique) ou de le supprimer,
-		liste des commentaires postés pour cet acteur, triés du plus ancien au plus récent, avec les références des utilisateurs ayant commenté.
+		liste des commentaires postés pour cet acteur, triés du plus ancien au plus récent, avec les références des utilisateurs ayant commenté en plus de la date.
 
 - Page profil : rappel des informations de l'utilisateur en cours,
 		possibilité de changer son identifiant utilisateur,
@@ -63,13 +66,19 @@ Par page :
 
 Structure :
 
-Le dossier Inclues contient en-tête et pied-de page, ils seront appelés sur chaque page.
-Le dossier Pages contient les différents pages du site (majoritairement en html et quelques conditions php), 
-		un dossier logos qui contient les images fixes du site, 
+- Le dossier Includes contient en-tête et pied-de page, ils seront appelés sur chaque page.
+
+- Le dossier Pages contient les différentes pages du site (majoritairement en html et quelques conditions php),
+
+		un dossier logos qui contient les images fixes du site,
+
 		un dossier font pour les polices d'écriture,
-		un dossier uploads pour stocker les photos de profil utilisateur.
+
+		un dossier uploads pour stocker les photos de profil utilisateur,
+
 		le fichier style.css qui définira l'apparence du site.
-Le dossier traitement contient tous les fichiers relatifs à l'execution de requêtes SQL et autres vérifications PHP qui seront appelées par les pages.
+
+- Le dossier traitement contient tous les fichiers relatifs à l'execution de requêtes SQL et autres vérifications PHP qui seront appelées par les pages.
 
 
 La Base de données :
@@ -79,6 +88,7 @@ Nom de la base de données : gbaf
 Elle se découpe en 4 tables (account, actor, post, vote) :
 
 -- Structure de la table `account` / Contient les informations utilisateurs
+
 CREATE TABLE `account` (
   `id_user` int(11) NOT NULL,
   `nom` varchar(127) NOT NULL,
@@ -92,6 +102,7 @@ CREATE TABLE `account` (
 
 
 -- Structure de la table `actor` / Contient les informations qui concernent les acteurs à présenter
+
 CREATE TABLE `actor` (
   `id_actor` int(11) NOT NULL,
   `actor` varchar(127) NOT NULL,
@@ -101,6 +112,7 @@ CREATE TABLE `actor` (
 
 
 -- Structure de la table `post` / Contient les commentaires
+
 CREATE TABLE `post` (
   `id_post` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
@@ -111,6 +123,7 @@ CREATE TABLE `post` (
 
 
 -- Structure de la table `vote` / Contient la liste des mentions "like" & "dislike"
+
 CREATE TABLE `vote` (
   `id_vote` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
