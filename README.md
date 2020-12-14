@@ -38,11 +38,11 @@ Par page :
 
 - Page de réinitialisation du mot de passe : formulaire de réinitialisation par étape,
 
-						étape 1 : demande de l'identifiant (puis vérification de son existance)
+étape 1 : demande de l'identifiant (puis vérification de son existance)
 
-						étape 2 : envoi de la question, formulaire demandant la réponse, le nouveau mot de passe et confirmation du mot de passe.
+étape 2 : envoi de la question, formulaire demandant la réponse, le nouveau mot de passe et confirmation du mot de passe.
 
-						étape 3 : si les informations sont valides, renvoi vers page de connexion, sinon message d'erreur.
+étape 3 : si les informations sont valides, renvoi vers page de connexion, sinon message d'erreur.
 
 
 - Page d'accueil : présentation de GBAF, introduction puis dresse une liste des acteurs à présenter avec un extrait de la description et lien vers la page complète.
@@ -70,13 +70,10 @@ Structure :
 
 - Le dossier Pages contient les différentes pages du site (majoritairement en html et quelques conditions php),
 
-		un dossier logos qui contient les images fixes du site,
-
-		un dossier font pour les polices d'écriture,
-
-		un dossier uploads pour stocker les photos de profil utilisateur,
-
-		le fichier style.css qui définira l'apparence du site.
+un dossier logos qui contient les images fixes du site,
+un dossier font pour les polices d'écriture,
+un dossier uploads pour stocker les photos de profil utilisateur,
+le fichier style.css qui définira l'apparence du site.
 
 - Le dossier traitement contient tous les fichiers relatifs à l'execution de requêtes SQL et autres vérifications PHP qui seront appelées par les pages.
 
