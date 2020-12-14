@@ -36,13 +36,14 @@ if(isset($_GET['act']) AND isset($_SESSION['username'])) // S'il y a bien un par
 		$_SESSION['deleted_post'] =  true ;
 		header('Location: ../pages/acteur.php?act=' . $actor);			
 	}
-	elseif(isset($_POST['new_post']) AND !empty($_POST['new_post'])) // Si c'est une demande d'écriture valide
+	elseif(isset($_POST['new_post']) AND !empty($_POST['new_post']) AND strlen($_POST['new_post']) > 1) // Si c'est une demande d'écriture valide
 	{	
 		// 2) On vérifie qu'il n'y a pas déjà un commentaire de cet utilisateur pour cet acteur
 		$result = $db->prepare('SELECT id_post FROM post WHERE id_user = :id_user AND id_actor = :id_actor');
 		$result->execute(array('id_user' => $id_user, 'id_actor' => $actor));
 		$data = $result->fetch();
 		$result->closeCursor();
+		
 		if(!$data) // Pas de donnée -> il n'y a pas de commentaire de cet utilisateur pour cet acteur
 		{			
 			$new_post = htmlspecialchars($_POST['new_post']);			
@@ -59,7 +60,12 @@ if(isset($_GET['act']) AND isset($_SESSION['username'])) // S'il y a bien un par
 			$_SESSION['existing_post'] = true ;
 			header('Location: ../pages/acteur.php?act=' . $actor);
 		}
-	}	
+	}
+	else
+	{
+		$_SESSION['invalid_post'] = true ;
+		header('Location: ../pages/acteur.php?act=' . $actor);
+	}
 }
 else // au cas où
 { 

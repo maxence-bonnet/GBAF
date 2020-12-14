@@ -213,7 +213,12 @@
 					{
 						    echo '<p style=color:red;>Vous avez déjà commenté cet acteur, pour commenter à nouveau, supprimez votre précédent commentaire.</p>';
 						    unset($_SESSION['existing_post']);
-					}												
+					}				
+					if(isset($_SESSION['invalid_post']))
+					{
+						    echo '<p style=color:red;>Le commentaire saisi est invalide.</p>';
+						    unset($_SESSION['invalid_post']);
+					}									
 					// On vérifie qu'il existe des commentaires pour cet acteur
 					$result = $db->prepare('SELECT id_actor FROM post WHERE id_actor = :actor');
 					$result->execute(array('actor' => $actor));
