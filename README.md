@@ -80,6 +80,8 @@ le fichier style.css qui définira l'apparence du site.
 
 La Base de données :
 
+L'export de la base de données, fourni à titre d'exemple, inclut dix personnes fictives qui intéragissent sur les différents acteurs pour mieux mettre en évidence le rendu final.
+
 Nom de la base de données : gbaf
 
 Elle se découpe en 4 tables (account, actor, post, vote) :
