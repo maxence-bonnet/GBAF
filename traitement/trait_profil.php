@@ -37,7 +37,7 @@ if(isset($_SESSION['username'])) // si connexion active
 			$result->closeCursor();			
 			if(strlen($_POST['username']) < 3)
 			{
-				// format mot de passe invalide
+				// trop court invalide
 				$error[] = 'short';			
 			}
 			elseif($data)

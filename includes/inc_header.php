@@ -1,6 +1,6 @@
-<div class="header_content">
+<header class="header_content">
 	<div class="logo_gbaf">
-		<a href="accueil.php"><img src="../pages/logos/gbaf.png" title="GBAF"alt="GBAF logo"/></a>
+		<a href="accueil.php"><img src="../pages/logos/gbaf.png" title="GBAF" alt="GBAF logo"/></a>
 	</div>
 	<?php
 		if(isset($_SESSION['username'])) //si session active
@@ -41,4 +41,4 @@
 			<?php
 		}
 	?>
-</div>
+</header>

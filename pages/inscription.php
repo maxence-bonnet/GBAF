@@ -35,7 +35,7 @@ session_start();
 
 							<label for="first_name">Prénom :</label><input type="text" name="first_name" id="first_name" placeholder="Jean" required/>
 
-							<label for="username">Indentifiant / nom d'utilisateur :</label><input type="texte" name="username" id="username" required/>
+							<label for="username">Indentifiant / nom d'utilisateur :</label><input type="text" name="username" id="username" required/>
 							<?php
 							if(isset($_SESSION['exist']))
 							{

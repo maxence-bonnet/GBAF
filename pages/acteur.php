@@ -12,7 +12,7 @@
 	</head>
 	<body>
 	<?php include("../includes/inc_header.php"); ?>
-	<div class ="content actor_content">
+	<div class="content actor_content">
 		<?php
 		if(isset($_GET['act']) AND isset($_SESSION['username'])) // si connecté
 		{
@@ -43,14 +43,14 @@
 				$data = $result->fetch();
 				$result->closeCursor();
 				?>
-				<div class="actor_full">
+				<section class="actor_full">
 			    	<div class="actor_full_logo"><img src="logos/<?= $data['logo']; ?>" alt="logo <?= $data['actor']; ?>"></div>
 			    		<div class="actor_full_description">
 				    		<h3><?= $data['actor']; ?></h3>
 				    		<p><?= nl2br($data['description']); ?></p>
 				    		<p>Vers le site de <a class="actor_external_link" href="#"><?= $data['actor']?></a></p>			    		
 				    	</div>
-				    </div>
+				    </section>
 				    	<div class="actor_like_management">
 				    		<?php // On vérifie si l'utilisateur a déjà posté un commentaire pour cet acteur
 		    					$result = $db->prepare('SELECT account.id_user, username, post.id_user, id_actor
@@ -169,7 +169,7 @@
 				    			{
 					    			foreach($like_list as $name)
 					    			{
-					    				echo $name . '&#013;';
+					    				echo $name . '&#10;';
 					    			}					    				
 				    			}	
 				    			?>">
@@ -180,7 +180,7 @@
 				    			{
 					    			foreach($dislike_list as $name)
 					    			{
-					    				echo $name . '&#013;';
+					    				echo $name . '&#10;';
 					    			}					    				
 				    			}			    			
 				    			?>">
@@ -194,9 +194,9 @@
 										<a href="../traitement/trait_like.php?act=<?= $actor ?>&amp;like=3">Réinitialiser</a></div></div>
 										<?php
 				    				}
-				    		?>			    	
-				    	</div>
-					<div class="post_section">
+				    		?>
+				    		</div>		    	
+					<section class="post_section">
 						<h4>Commentaires :</h4>
 						<?php
 					if(isset($_SESSION['posted']))
@@ -258,7 +258,7 @@
 				}
 			}
 			?>
-				</div>
+				</section>
 			<?php
 			if(isset($_GET['add']) AND $_GET['add'] == 1)
 			{

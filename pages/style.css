@@ -483,6 +483,11 @@ h1, h2, h3, h4
 	margin-top:3em;
 	margin-bottom:3em;
 }
+hr
+{
+	height:1px;
+	width:80%;
+}
 /* === INSCRIPTION CONTENT === */
 .inscription_content form
 {
@@ -757,7 +762,7 @@ h4
 
 /* === MENTIONS LEGALES CONTENT === */
 
-/* === QUERIES TABELET (769px-900px) ====*/
+/* === QUERIES TABLET (769px-900px) ====*/
 @media all and (max-width: 900px)
 {
 	html

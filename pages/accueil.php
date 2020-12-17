@@ -17,7 +17,7 @@
 		if(isset($_SESSION['username']) AND !empty($_SESSION['username']))
 		{
 			?>
-			<div class="presentation_section">
+			<section class="presentation_section">
 				<h1>Groupement Banque-Assurance Français</h1>
 				<p>Le GBAF représente les professions bancaires et de l'assurance sur tous les axes de la réglementation financière française. Sa mission est de promouvoir l'activité bancaire à l'échelle nationale. Il est également un interlocuteur privilégié des pourvoirs publics. Il est le fruit de l'association de 6 grands groupes français : BNP Paribas, BPCE, Crédit Agricole, Crédit Mutuel-CIC, Société Générale, La Banque Postale.</p>
 				<div class="illustration">
@@ -31,9 +31,9 @@
 						<a href="#"><img src="logos/banques/BNP.png" alt="bnp_paribas"/></a>
 					</div>
 				</div>
-			</div>
+			</section>
 
-			<div class="actors_list_section">
+			<section class="actors_list_section">
 				<div class="actors_list_intro">
 					<h2>Les acteurs et partenaires</h2>
 						<p>Une liste complète des différents partenaires avec qui nous sommes susceptibles de collaborer. Vous pourrez ici vous renseigner sur chacun d'entre eux, consulter les avis de confrères, ou y laisser votre propre commentaire afin d'échanger des appréciations constructives et de distinguer les qualités et compétences de chacun de ces partenaires.</p>
@@ -74,7 +74,7 @@
 						}
 						$result->closeCursor();
 					?>
-			</div>
+			</section>
 		<?php
 		}
 		else

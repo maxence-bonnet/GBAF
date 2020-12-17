@@ -34,7 +34,7 @@ if(isset($_SESSION['username'])) // si connexion active
 			</head>
 			<body>
 				<?php include("../includes/inc_header.php"); ?>
-				<div class ="content profile_content">
+				<section class="content profile_content">
 					<form enctype="multipart/form-data" class="profile_form" action="../traitement/trait_profil.php" method="post">
 						<fieldset>
 							<legend>Mon profil</legend>
@@ -51,7 +51,7 @@ if(isset($_SESSION['username'])) // si connexion active
 									</div>
 								</div>
 							</div>
-							<HR size="3px" width="80%" color="black">
+							<HR>
 								<div class="update_profile">
 									<div class="update_profile_part1">
 										<label for="username">Modifier mon identifiant : </label><input type="text" name="username" id="username"/>
@@ -108,14 +108,14 @@ if(isset($_SESSION['username'])) // si connexion active
 							<input type="submit" name="update_profile_submit" value="Modifier ces paramètres">
 						</fieldset>
 					</form>
-				</div>
+				</section>
 				<?php include("../includes/inc_footer.php"); ?>
 			</body>
-		</html>
-	<?php
+<?php
 }
 else // pas de connexion -> retour accueil
 {
 	header('Location: accueil.php');
 }
 ?>
+</html>

@@ -11,9 +11,9 @@
 	</head>
 	<body>
 		<?php include("../includes/inc_header.php"); ?>
-		<div class ="content contact_content">
+		<section class="content contact_content">
 			<h1>CONTACT</h1>
-		</div>
+		</section>
 		<?php include("../includes/inc_footer.php"); ?>
 	</body>
 </html>
