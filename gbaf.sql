@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mar. 20 avr. 2021 à 14:30
+-- Généré le : mar. 20 avr. 2021 à 14:34
 -- Version du serveur :  10.4.18-MariaDB
 -- Version de PHP : 8.0.3
 
@@ -52,10 +52,7 @@ INSERT INTO `account` (`id_user`, `nom`, `prenom`, `username`, `password`, `ques
 (7, 'Cotillard', 'Marion', 'Marion', '$2y$10$MauROy0h52R3/0KrmyeShOn9y7m/qSAbLRr1HVaVundxsw.ffFPYq', 'année de naissance', '$2y$10$q/Xo9h9HssNYgGy/ILm7S.JWnlYg0POhlgUswilBMuvH1/D0dMR.y', 'Cottilard.jpg'),
 (8, 'Baye', 'Nathalie', 'Nathalie', '$2y$10$L8c04MwPQzGOR5L027lfSezHt0liujvcV2a5L8pbIlaLJ7FzV74qW', 'année de naissance', '$2y$10$Jr2TMvaLcO0p/NEe5dGInutQJaiMkJufJkoNy6.7VZ.1n1rk0CQMW', 'Baye.jpg'),
 (9, 'Deneuve', 'Catherine', 'Catherine', '$2y$10$KU0hH/1n8VbFtJWNgT2Iku5xjQOYRzB2o9/XzsApUIvoM/1ErLO/O', 'année de naissance', '$2y$10$UN07/prhwYJCshhraGXguOBFJINA6hPmw0DsVcTDC8Mt8do4JPmhG', 'Deneuve.jpg'),
-(10, 'Cottin', 'Camille', 'Camille', '$2y$10$1jWVT8DNiP1.uI064OVKWuBghO7CC6uihE7ybfnyXpTQWeiixY3VW', 'année de naissance', '$2y$10$hefxEmqMQQ7ep98dV7ILb.6uqzxkcH2LXYarueILkKJHiiOAPlqca', 'Cottin.jpg'),
-(11, 'Sul', 'Orid', 'Orid', '$2y$10$6OHqveca8Uh1tTrVSVf2cubpE9eNO6VAVYjMNG1Pnn7chIRipXdtK', 'aaa', '$2y$10$RhBgbb3G7HtrLfW7Eb.QEuoGVENRC5UutEXFBTTu43yfgitzVcMui', 'default.png'),
-(12, 'Toutça', 'cestrigolo', 'Rigolo', '$2y$10$uCpoLIXCWpZ1lUnJv/yXTe6EI5lS6x48CotrSc43yRLMpb6qyQEYC', 'aaa', '$2y$10$ySy65LtH3.YJt7L9Lae7iOmRiZS8uGk.4MuATAR7C6VvSaeJhCjZK', 'default.png'),
-(13, 'Poubelle', 'Eugène', 'Eugene', '$2y$10$lNYr2fSiAFYu5n.o1uJ9wuOV0dgMS37DWBDklyaon40K99wveGyL6', 'année de naissance', '$2y$10$aM9QczaJrqAFxw4EVMHhfOhPh2QhHbXHVh5bULWDfXdQpnu2drOfO', '54190453859Poubelle.jpg');
+(10, 'Cottin', 'Camille', 'Camille', '$2y$10$1jWVT8DNiP1.uI064OVKWuBghO7CC6uihE7ybfnyXpTQWeiixY3VW', 'année de naissance', '$2y$10$hefxEmqMQQ7ep98dV7ILb.6uqzxkcH2LXYarueILkKJHiiOAPlqca', 'Cottin.jpg');
 
 -- --------------------------------------------------------
 
