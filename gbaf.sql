@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : jeu. 10 déc. 2020 à 09:43
--- Version du serveur :  10.4.14-MariaDB
--- Version de PHP : 7.4.10
+-- Généré le : mar. 20 avr. 2021 à 14:30
+-- Version du serveur :  10.4.18-MariaDB
+-- Version de PHP : 8.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -43,16 +43,19 @@ CREATE TABLE `account` (
 --
 
 INSERT INTO `account` (`id_user`, `nom`, `prenom`, `username`, `password`, `question`, `reponse`, `photo`) VALUES
-(1, 'Vincent', 'Cassel', 'Vincent', '$2y$10$FzokmEaB6mvH4aXmj8x1jOmMD.FlzEuoywKCsUekKH5JE7NYJvFjy', 'année de naissance', '$2y$10$fFJ6SghaPf5jd0hiK8fCaelB/rrpVjeQRpj9Zkmo8BGOECR8Ono3a', '69121484807Cassel.jpg'),
-(2, 'Dujardin', 'jean', 'Jean', '$2y$10$lHeK1oJF8utrFqlvk5TLAe55m7H5uZ9b.0KbLvQRwlWuyQ8nm9kT.', 'année de naissance', '$2y$10$o2MdwR2M636TYTS2Qq26Z.ojTOMCQsRsQ2TCw.MTEM6NT39Yi8FDS', '23804974023Dujardin.jpg'),
-(3, 'Duris', 'Romain', 'Romain', '$2y$10$R9MZZcO7IgGtGk8.GGkSH.3TQSkw6bewW/HSOS8.plO90G7dBW2zW', 'année de naissance', '$2y$10$vLqCgTFkPt/l2malPKlYseyCDMoaJ2WAN1WA5Dgth8CjUXiluGcKO', '42390403167Duris.jpeg'),
-(4, 'Sy', 'Omar', 'Omar', '$2y$10$fjy8tomBTJwK37OHjKC6PeAk2mp3lT5E.g0Yv5VF63cznYPexa0Me', 'année de naissance', '$2y$10$vXNncUtK8yVsOg3SmOvSjewsCb7/cD6zhnVyP7DY5jkmhD/JTFiJC', '33867087983Sy.jpg'),
-(5, 'Depardieu', 'Gérard', 'Gérard', '$2y$10$qtzy1Nw/RsvjnMmH1GCuguiH17MV1gYcY2K7qKOFb4yAWPotT/d2e', 'année de naissance', '$2y$10$yda6ZoQiKp6SqYT/WCDHkePJyJj3dBThqss8i775mW6zksY1qUit6', '11135352201Depardieu.jpg'),
-(6, 'Tautou', 'Audrey', 'Audrey', '$2y$10$bnt4l5WOF2l/a2B0LqF7SeMv4eteK.Hv652Wjx3tzigehHFMYZKDG', 'année de naissance', '$2y$10$ZrS.3CKqLRGpbIXc1CC0W.RJdpXhTieji/QvNANvk5NLwgHawIvmq', '13629399017Tautou.jpg'),
-(7, 'Cotillard', 'Marion', 'Marion', '$2y$10$MauROy0h52R3/0KrmyeShOn9y7m/qSAbLRr1HVaVundxsw.ffFPYq', 'année de naissance', '$2y$10$1HIk3sf/ZcQa7.HVSLJf4.1TtYym41tWlKHW2IvLtmyZSz4v6wwKu', '21126637656Cottilard.jpg'),
-(8, 'Baye', 'Nathalie', 'Nathalie', '$2y$10$L8c04MwPQzGOR5L027lfSezHt0liujvcV2a5L8pbIlaLJ7FzV74qW', 'année de naissance', '$2y$10$BydCv9pLs2AJ306q1riU5ea4oAcwRZsqs22QzC9rM.rFBX7vdszSq', '31035579618Baye.jpg'),
-(9, 'Deneuve', 'Catherine', 'Catherine', '$2y$10$KU0hH/1n8VbFtJWNgT2Iku5xjQOYRzB2o9/XzsApUIvoM/1ErLO/O', 'année de naissance', '$2y$10$Xv3oFoIotGAmCBWNPmM6TuPqdAXWATH61UWV3sKze.V6aY8d/uF5W', '77804848898Deneuve.jpg'),
-(10, 'Cottin', 'Camille', 'Camille', '$2y$10$1jWVT8DNiP1.uI064OVKWuBghO7CC6uihE7ybfnyXpTQWeiixY3VW', 'année de naissance', '$2y$10$oxCGFvcuXONWhIa64e/i0.UOXsA3dxy1.jQGQZWeYBkgDHPyoQE6O', '28922886630Cottin.jpg');
+(1, 'Cassel', 'Vincent', 'Vincent', '$2y$10$xpxl9QCVqsPtXTevBh590.vvZF1ZRn0hFtEWvyNn7BIjAgLEOMUeq', 'année de naissance', '$2y$10$Ib4.RlanclLdaBlEnNWcl.H/zEn7dJztt6lJIQK47ZX5yUY3FHlgK', 'Cassel.jpg'),
+(2, 'Dujardin', 'Jean', 'Jean', '$2y$10$EmjPZ2VahOSErFYM3wyMyex/nLxkuDCozgFpsz8E9omcy8XI6Lv3e', 'année de naissance', '$2y$10$KD9mxIrwtZ39NicMO38.8eeagGYWaxDlZBhH82qUrxhlUdwNnwDge', 'Dujardin.jpg'),
+(3, 'Duris', 'Romain', 'Romain', '$2y$10$R9MZZcO7IgGtGk8.GGkSH.3TQSkw6bewW/HSOS8.plO90G7dBW2zW', 'année de naissance', '$2y$10$7VkNOWWzgg1wQ.Vjy6khWOA4KCKidFroHvBUp6sAmVN.RfjdGH0oy', 'Duris.jpeg'),
+(4, 'Sy', 'Omar', 'Omar', '$2y$10$fjy8tomBTJwK37OHjKC6PeAk2mp3lT5E.g0Yv5VF63cznYPexa0Me', 'année de naissance', '$2y$10$UMJJZEK/RwFf9.ZM2LIjyuaTJp6MYxqvbtzA.C/3AeUJrcTZztBbG', 'Sy.jpg'),
+(5, 'Depardieu', 'Gérard', 'Gérard', '$2y$10$qtzy1Nw/RsvjnMmH1GCuguiH17MV1gYcY2K7qKOFb4yAWPotT/d2e', 'année de naissance', '$2y$10$5Z83rOiaK7sIMJy2K6mR8.m3L.ZyM986eJIdvm8VgR284JN/PDwsa', 'Depardieu.jpg'),
+(6, 'Tautou', 'Audrey', 'Audrey', '$2y$10$bnt4l5WOF2l/a2B0LqF7SeMv4eteK.Hv652Wjx3tzigehHFMYZKDG', 'année de naissance', '$2y$10$HeL/aSe6vynp7tskQIkN0O3VSzac7tJpoR15se3rBoIU51nsXOhZq', 'Tautou.jpg'),
+(7, 'Cotillard', 'Marion', 'Marion', '$2y$10$MauROy0h52R3/0KrmyeShOn9y7m/qSAbLRr1HVaVundxsw.ffFPYq', 'année de naissance', '$2y$10$q/Xo9h9HssNYgGy/ILm7S.JWnlYg0POhlgUswilBMuvH1/D0dMR.y', 'Cottilard.jpg'),
+(8, 'Baye', 'Nathalie', 'Nathalie', '$2y$10$L8c04MwPQzGOR5L027lfSezHt0liujvcV2a5L8pbIlaLJ7FzV74qW', 'année de naissance', '$2y$10$Jr2TMvaLcO0p/NEe5dGInutQJaiMkJufJkoNy6.7VZ.1n1rk0CQMW', 'Baye.jpg'),
+(9, 'Deneuve', 'Catherine', 'Catherine', '$2y$10$KU0hH/1n8VbFtJWNgT2Iku5xjQOYRzB2o9/XzsApUIvoM/1ErLO/O', 'année de naissance', '$2y$10$UN07/prhwYJCshhraGXguOBFJINA6hPmw0DsVcTDC8Mt8do4JPmhG', 'Deneuve.jpg'),
+(10, 'Cottin', 'Camille', 'Camille', '$2y$10$1jWVT8DNiP1.uI064OVKWuBghO7CC6uihE7ybfnyXpTQWeiixY3VW', 'année de naissance', '$2y$10$hefxEmqMQQ7ep98dV7ILb.6uqzxkcH2LXYarueILkKJHiiOAPlqca', 'Cottin.jpg'),
+(11, 'Sul', 'Orid', 'Orid', '$2y$10$6OHqveca8Uh1tTrVSVf2cubpE9eNO6VAVYjMNG1Pnn7chIRipXdtK', 'aaa', '$2y$10$RhBgbb3G7HtrLfW7Eb.QEuoGVENRC5UutEXFBTTu43yfgitzVcMui', 'default.png'),
+(12, 'Toutça', 'cestrigolo', 'Rigolo', '$2y$10$uCpoLIXCWpZ1lUnJv/yXTe6EI5lS6x48CotrSc43yRLMpb6qyQEYC', 'aaa', '$2y$10$ySy65LtH3.YJt7L9Lae7iOmRiZS8uGk.4MuATAR7C6VvSaeJhCjZK', 'default.png'),
+(13, 'Poubelle', 'Eugène', 'Eugene', '$2y$10$lNYr2fSiAFYu5n.o1uJ9wuOV0dgMS37DWBDklyaon40K99wveGyL6', 'année de naissance', '$2y$10$aM9QczaJrqAFxw4EVMHhfOhPh2QhHbXHVh5bULWDfXdQpnu2drOfO', '54190453859Poubelle.jpg');
 
 -- --------------------------------------------------------
 
@@ -127,7 +130,7 @@ CREATE TABLE `vote` (
 INSERT INTO `vote` (`id_vote`, `id_user`, `id_actor`, `vote`) VALUES
 (1, 10, 1, 'like'),
 (2, 1, 1, 'like'),
-(3, 2, 1, 'like'),
+(3, 2, 1, 'dislike'),
 (4, 3, 1, 'like'),
 (5, 4, 1, 'like'),
 (6, 5, 1, 'like'),
@@ -135,13 +138,15 @@ INSERT INTO `vote` (`id_vote`, `id_user`, `id_actor`, `vote`) VALUES
 (8, 7, 1, 'like'),
 (9, 8, 1, 'like'),
 (10, 10, 1, 'like'),
-(11, 2, 2, 'dislike'),
 (12, 3, 2, 'like'),
 (13, 5, 2, 'dislike'),
 (14, 7, 2, 'dislike'),
 (15, 9, 2, 'dislike'),
 (16, 10, 2, 'dislike'),
-(17, 1, 2, 'like');
+(17, 1, 2, 'like'),
+(20, 2, 3, 'like'),
+(27, 2, 2, 'dislike'),
+(28, 2, 4, 'dislike');
 
 --
 -- Index pour les tables déchargées
@@ -179,7 +184,7 @@ ALTER TABLE `vote`
 -- AUTO_INCREMENT pour la table `account`
 --
 ALTER TABLE `account`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT pour la table `actor`
@@ -191,13 +196,13 @@ ALTER TABLE `actor`
 -- AUTO_INCREMENT pour la table `post`
 --
 ALTER TABLE `post`
-  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT pour la table `vote`
 --
 ALTER TABLE `vote`
-  MODIFY `id_vote` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_vote` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
